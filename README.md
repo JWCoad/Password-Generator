@@ -4,7 +4,7 @@ Password Generator with selectable options using confirm box
 
 ### Live at [Git Pages](https://jwcoad.github.io/Password-Generator/)
 ### Repo at [Github](https://github.com/JWCoad/Password-Generator)
-### Screenshot of page ![Image of page]()
+### Screenshot of page ![https://github.com/JWCoad/Password-Generator/blob/main/assets/screenshot.JPG]()
 
 
 ## Resources used:
