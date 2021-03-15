@@ -18,7 +18,7 @@ function generatePassword() {
   let useSpecial = confirm("Do you want to include special characters?");
 
   // protection against an all no selection 
-  while (useLowerCase == false && useUpperCase == false && useNumeric == false && useSpecial == false) {
+  while (!useLowerCase && !useUpperCase && !useNumeric && !useSpecial) {
     alert("Please select one type of character");
     useLowerCase = confirm("Do you want to include lowercase characters?");
     useUpperCase = confirm("Do you want to include uppercase characters?");
@@ -36,19 +36,19 @@ function generatePassword() {
 
 
   // Adds seletion to array
-  if (useLowerCase == true) {
+  if (useLowerCase) {
     caseArray.push(lowerCaseChar);
 
   }
-  if (useUpperCase == true) {
+  if (useUpperCase) {
     caseArray.push(upperCaseChar)
 
   }
-  if (useNumeric == true) {
+  if (useNumeric) {
     caseArray.push(numericChar)
 
   }
-  if (useSpecial == true) {
+  if (useSpecial) {
     caseArray.push(specialChar)
   }
 
