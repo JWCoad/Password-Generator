@@ -1,4 +1,4 @@
-//// create arrays for all lowercase, upercase, numeric, and special characters & a variable for the password string
+// create arrays for password variables
 
 let caseArray = [];
 let lowerCaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -6,18 +6,18 @@ let upperCaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
 let numericChar = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 let specialChar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "{", "}", "|", "[", "]", ";", "'", ":", "<", ">", "?", "/"];
 
-// creating a function for generating the password
+// password generate function
 function generatePassword() {
 
   let passwordString = "";
 
-  // declaring boolean variables, asking user for input
+  // Add in options for user
   let useLowerCase = confirm("Do you want to include lowercase characters?");
   let useUpperCase = confirm("Do you want to include uppercase characters?");
   let useNumeric = confirm("Do you want to include numeric characters?");
   let useSpecial = confirm("Do you want to include special characters?");
 
-  //running loop to check if all variables are false. If so, user is prompted to select again
+  // protection against an all no selection 
   while (useLowerCase == false && useUpperCase == false && useNumeric == false && useSpecial == false) {
     alert("Please select one type of character");
     useLowerCase = confirm("Do you want to include lowercase characters?");
@@ -26,7 +26,7 @@ function generatePassword() {
     useSpecial = confirm("Do you want to include special characters?");
   }
 
-  // while loop to check for password length. If number less than 8 or over 128, or if input is a string or NaN, user is asked for input again
+  // loop for password size length
 
   let passwordLength = parseInt(prompt("How many characters do you want the password to be? The password cannot be less than 8 or more than 128 characters."));
   while (passwordLength < 8 || passwordLength > 128 || typeof (passwordLength) != "number" || passwordLength === NaN || passwordLength === null) {
@@ -34,9 +34,8 @@ function generatePassword() {
     passwordLength = parseInt(prompt("How many characters do you want the password to be? The password cannot be less than 8 or more than 128 characters."));
   }
 
-  //console.log(passwordLength.length);
-  //// if character type is selected, the array name is stored into a group array
 
+  // Adds seletion to array
   if (useLowerCase == true) {
     caseArray.push(lowerCaseChar);
 
@@ -53,7 +52,7 @@ function generatePassword() {
     caseArray.push(specialChar)
   }
 
-  //// a loop is run for the length of the password
+  // Loop for character selection
 
   for (let i = 0; i < passwordLength; i++) {
 
@@ -62,38 +61,29 @@ function generatePassword() {
     let randomCharNum;
     let randomChar;
 
-    //// a random number is generated for the group array (length of group array)
+    // Using the power of math, select random entries
 
-    randomCharArrayNum = parseInt(Math.floor(Math.random() * caseArray.length)); //random number based on length of case array
+    randomCharArrayNum = parseInt(Math.floor(Math.random() * caseArray.length));
 
-    //// a random number is generated for the character array (length of character array)
+    //variable that stores selected array from case array
+    selectedCharArray = caseArray[randomCharArrayNum];
 
-    selectedCharArray = caseArray[randomCharArrayNum]; //variable that stores selected array from case array
 
-    //console.log("The array has " + caseArray.length + " entries"); //testing length of caseArray
-    //console.log(randomCharArrayNum); //testing random number generated based on length of caseArray
+    randomCharNum = Math.floor(Math.random() * selectedCharArray.length);
 
-    randomCharNum = Math.floor(Math.random() * selectedCharArray.length);// variable that stores random number based on length of selected array
-
-    // console.log("The selected Array is the " + selectedCharArray); //testing array chosen
-    // console.log("The selected random index is " + randomCharNum); //testing random number generation based on chosen array length 
 
     randomChar = selectedCharArray[randomCharNum];
-    //console.log(randomChar);
-    // console.log("Your random character array num is " + randomCharArrayNum + " and your random character number is " + randomCharNum);
 
-    // now, need to accumulate the string
+
     passwordString += randomChar;
-    //return passwordString;
 
   }
-  //console.log("Your password is " + passwordString);
-  //alert("Your password is " + passwordString);
+
   passwordEntry.textContent = passwordString;
 }
 
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
+// When the password is created it is add to field
+
 let generateButton = document.getElementById("generate");
 let passwordEntry = document.getElementById("passwordEntry");
 generateButton.onclick = generatePassword;
