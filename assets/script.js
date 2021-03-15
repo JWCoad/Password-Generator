@@ -10,7 +10,7 @@ let specialChar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "{", "}", "
 function generatePassword() {
 
   let passwordString = "";
-
+  caseArray = [];
   // Add in options for user
   let useLowerCase = confirm("Do you want to include lowercase characters?");
   let useUpperCase = confirm("Do you want to include uppercase characters?");
