@@ -94,6 +94,6 @@ function generatePassword() {
 
 // WHEN the password is generated
 // THEN the password is either displayed in an alert or written to the page
-let generateButton = document.getElementById("generateButton");
+let generateButton = document.getElementById("generate");
 let passwordEntry = document.getElementById("passwordEntry");
 generateButton.onclick = generatePassword;
